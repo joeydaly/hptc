@@ -40,22 +40,22 @@
 				<!-- Column 2 start -->
 				navigation?
 
-			<ul>
-				<li><a href="<?php echo site_url();?>">Home</a></li>
-				<li><a href="<?php echo site_url('users/profile');?>">Edit Profile</a></li>
-			<?php
-				// acessing our userdata cookie
-				$cookie = unserialize($this->input->cookie($this->config->item('sess_cookie_name')));
-				$logged_in = isset ($cookie['logged_in']);
-				unset ($cookie);
-			?>
-			<li>
-			<? if ($logged_in) { ?>
-				<a href="<?php echo site_url('logout');?>">Logout</a>
-			<? } else { echo anchor('/login', 'Login'); } ?>
-			</li>
-
-			</ul>
+					<ul>
+						<li><a href="<?php echo site_url();?>">Home</a></li>
+						<li><a href="<?php echo site_url('users/profile');?>">Edit Profile</a></li>
+					<?php
+						// acessing our userdata cookie
+						$cookie = unserialize($this->input->cookie($this->config->item('sess_cookie_name')));
+						$logged_in = isset ($cookie['logged_in']);
+						unset ($cookie);
+					?>
+					<li>
+					<? if ($logged_in) { ?>
+						<a href="<?php echo site_url('logout');?>">Logout</a>
+					<? } else { echo anchor('/login', 'Login'); } ?>
+					</li>
+		
+					</ul>
 				
 				
 				<!-- Column 2 end -->
@@ -63,6 +63,20 @@
 			<div class="col3">
 				<!-- Column 3 start -->
 				ads n stuff
+				
+				<?
+				if(isset($services))
+				{
+					echo heading('Services');
+					foreach ($services as $r)
+					{
+						$r = (array)$r;						
+						echo br();
+						echo $r['service_type'];					
+					}
+				}
+				?>
+				
 				<!-- Column 3 end -->
 			</div>
 		</div>
