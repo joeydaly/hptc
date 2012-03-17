@@ -65,7 +65,7 @@
 				ads n stuff
 				
 				<?
-				if(isset($services))
+				/*if(isset($services))
 				{
 					echo heading('Services');
 					foreach ($services as $r)
@@ -74,7 +74,8 @@
 						echo br();
 						echo $r['service_type'];					
 					}
-				}
+				}*/
+				echo Modules::run('service/renderlist');
 				?>
 				
 				<!-- Column 3 end -->
