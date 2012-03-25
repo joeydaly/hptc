@@ -1,0 +1,14 @@
+Pages (Content)
+ table 
+ - id
+ - title
+ - page_content
+ - author
+ - created
+ - updated
+
+ method
+ - index with param of page id (hptc/pages/2)
+
+
+Members

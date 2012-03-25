@@ -2,15 +2,19 @@
 	// Setup our default assets to load.
 	Assets::add_js( array(
 		base_url() .'assets/js/jquery-1.7.1.min.js',
+		base_url() .'assets/js/ckeditor.js',
+		base_url() .'assets/js/sample.js'
 	));
+	//Assets::add_css('sample.css');
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title><?php echo config_item('site.title'); ?></title>
-	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
-	<meta name="description" content="The Perfect 3 Column Liquid Layout: No CSS hacks. SEO friendly. iPhone compatible." />
-	<meta name="keywords" content="The Perfect 3 Column Liquid Layout: No CSS hacks. SEO friendly. iPhone compatible." />
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
 	<meta name="robots" content="index, follow" />
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 	<?php echo Assets::css(); ?>
@@ -19,9 +23,8 @@
 <body>
 
 <div id="header">
-	<p><a href="">seo links up here</a></p>
 	<h1>Hampton Park Tennis Club</h1>
-	<p id="layoutdims">something small like a ticker go here</p>
+	<p id="layoutdims">&nbsp;</p>
 </div>
 <div class="colmask threecol">
 	<div class="colmid">
@@ -38,44 +41,15 @@
 			</div>
 			<div class="col2">
 				<!-- Column 2 start -->
-				navigation?
-
-					<ul>
-						<li><a href="<?php echo site_url();?>">Home</a></li>
-						<li><a href="<?php echo site_url('users/profile');?>">Edit Profile</a></li>
-					<?php
-						// acessing our userdata cookie
-						$cookie = unserialize($this->input->cookie($this->config->item('sess_cookie_name')));
-						$logged_in = isset ($cookie['logged_in']);
-						unset ($cookie);
-					?>
-					<li>
-					<? if ($logged_in) { ?>
-						<a href="<?php echo site_url('logout');?>">Logout</a>
-					<? } else { echo anchor('/login', 'Login'); } ?>
-					</li>
-		
-					</ul>
-				
+								<? echo Modules::run('pages/render_menu'); ?>
 				
 				<!-- Column 2 end -->
 			</div>
 			<div class="col3">
 				<!-- Column 3 start -->
-				ads n stuff
-				
-				<?
-				/*if(isset($services))
-				{
-					echo heading('Services');
-					foreach ($services as $r)
-					{
-						$r = (array)$r;						
-						echo br();
-						echo $r['service_type'];					
-					}
-				}*/
-				echo Modules::run('service/renderlist');
+				ads & stuff
+				<?			
+					//echo Modules::run('service/renderlist');
 				?>
 				
 				<!-- Column 3 end -->
@@ -88,7 +62,7 @@
 <p style="float: right;">Page rendered in {elapsed_time} seconds, using {memory_usage}.</p>
 <?php endif; ?>
 
-<p>Powered by <a href="http://cibonfire.com" target="_blank">Bonfire <?php echo BONFIRE_VERSION ?></a></p>
+<p><?php echo VALIDUSCMS . VALIDUSCMS_VERSION ?></a></p>
 </div>
 <div id="debug"></div>
 <script>

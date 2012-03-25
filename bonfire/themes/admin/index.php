@@ -5,11 +5,13 @@
 		Template::theme_url('js/jquery.form.js'),
 		Template::theme_url('js/jquery-ui-1.8.13.min.js'),
 		Template::theme_url('js/ui.js'),
-		Template::theme_url('js/jwerty.js'),
+		Template::theme_url('js/jwerty.js'),		
+		base_url() .'assets/js/ckeditor.js',
+		base_url() .'assets/js/sample.js'
 	),
 	'external',
 	true);
-
+	
 	if (isset($shortcut_data) && is_array($shortcut_data['shortcut_keys'])) {
 		Assets::add_js($this->load->view('ui/shortcut_keys', $shortcut_data, true), 'inline');
 	}
@@ -23,7 +25,9 @@
 
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 
-	<?php echo Assets::css(null, 'screen', true); ?>
+	<?php 
+		echo Assets::css(null, 'screen', true); 
+	?>
 
 	<!-- Fix the mobile Safari auto-zoom bug -->
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
