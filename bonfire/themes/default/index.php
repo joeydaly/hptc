@@ -3,7 +3,8 @@
 	Assets::add_js( array(
 		base_url() .'assets/js/jquery-1.7.1.min.js',
 		base_url() .'assets/js/ckeditor.js',
-		base_url() .'assets/js/sample.js'
+		base_url() .'assets/js/sample.js',
+		base_url() .'assets/js/jquery.innerfade.min.js'
 	));
 	//Assets::add_css('sample.css');
 ?>
@@ -22,53 +23,69 @@
 </head>
 <body>
 
-<div id="header">
-	<h1>Hampton Park Tennis Club</h1>
-	<p id="layoutdims">&nbsp;</p>
-</div>
-<div class="colmask threecol">
-	<div class="colmid">
-		<div class="colleft">
-			<div class="col1">
-				<!-- Column 1 start -->
-				<div class="main">
+	<div class="header">
+		<h1>Hampton Park Tennis Club</h1>
+	</div>
 
-			<?php echo Template::message(); ?>
-			<?php echo isset($content) ? $content : Template::yield(); ?>
+	<div class="column-wrap">
 
-				</div>	<!-- /main -->
-				<!-- Column 1 end -->
-			</div>
-			<div class="col2">
-				<!-- Column 2 start -->
-								<? echo Modules::run('pages/render_menu'); ?>
+		<div class="column-1-wrapper">
+			<div class="column-1">
+				<div class="column-1-padding">
+				<? 
+				echo Template::message(); 
 				
-				<!-- Column 2 end -->
-			</div>
-			<div class="col3">
-				<!-- Column 3 start -->
-				ads & stuff
-				<?			
-					//echo Modules::run('service/renderlist');
+				if(isset($content)) 
+				{
+					echo $content;	
+				} else {
+						
+					echo Modules::run('rotating_images/index'); 
+					
+					echo Template::yield();
+					//Template::block('midsection', 'home/index');
+				}  
 				?>
-				
-				<!-- Column 3 end -->
+	
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<div id="footer">
-<?php if (ENVIRONMENT == 'development') :?>
-<p style="float: right;">Page rendered in {elapsed_time} seconds, using {memory_usage}.</p>
-<?php endif; ?>
+	
+		<div class="column-2-wrapper">
+			<div class="column-2">
+				<div class="column-2-padding">
+	
+				<? echo Modules::run('pages/render_menu'); ?>
+	
+				</div>
+			</div>
+		</div>
+	
+		<div class="column-3-wrapper">
+			<div class="column-3">
+				<div class="column-3-padding">
+					<?php Template::block('sidebar', 'partials/sidebar'); ?>
+				</div>
+			</div>
+		</div>
 
-<p><?php echo VALIDUSCMS . VALIDUSCMS_VERSION ?></a></p>
-</div>
-<div id="debug"></div>
-<script>
-	head.js(<?php echo Assets::external_js(null, true) ?>);
-	head.js(<?php echo Assets::module_js(true) ?>);
-</script>
-<?php echo Assets::inline_js(); ?>
+	</div><!-- close column-wrap -->
+
+	<div class="footer">
+		<h6>
+		<?php if (ENVIRONMENT == 'development') :?>
+			<p style="float: right;">Page rendered in {elapsed_time} seconds, using {memory_usage}.</p>
+		<?php endif; ?>
+	
+		<p><?php echo VALIDUSCMS . VALIDUSCMS_VERSION ?></a></p>
+		</h6>
+	</div>
+
+	<div id="debug"></div>
+	<script>
+		head.js(<?php echo Assets::external_js(null, true) ?>);
+		head.js(<?php echo Assets::module_js(true) ?>);
+	</script>
+	<?php echo Assets::inline_js(); ?>
 </body>
 </html>

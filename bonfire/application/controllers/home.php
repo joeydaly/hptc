@@ -7,6 +7,7 @@ class Home extends Front_Controller {
 	public function index() 
 	{
 		$this->load->helper('html');
+		$this->load->helper('navigation/navigation');
 		//$this->load->model('service_model', null, true);
 		$data = array();
 		//$data['services'] = $this->service_model->find_all();

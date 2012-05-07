@@ -7,7 +7,9 @@
 		Template::theme_url('js/ui.js'),
 		Template::theme_url('js/jwerty.js'),		
 		base_url() .'assets/js/ckeditor.js',
-		base_url() .'assets/js/sample.js'
+		base_url() .'assets/js/jquery.friendurl.js'
+		//base_url() .'assets/js/config.js'
+		//base_url() .'assets/js/sample.js'
 	),
 	'external',
 	true);

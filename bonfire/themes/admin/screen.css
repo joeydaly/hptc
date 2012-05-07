@@ -554,17 +554,40 @@ div.ui-dialog div#shortkeys_dialog ul li span {width: 80px;display:inline-block}
 
 
 /* Admin Forms */
+.content-form {
+	width: 100%;
+	margin-top: 25px;	
+}
+.content-form input, .content-form textarea {
+	padding: 5px;
+	width: 471px;
+	font-family: Helvetica, sans-serif;
+	font-size: 1.4em;
+	margin: 0px 0px 10px 0px;
+	/*border: 2px solid #ccc;*/
+}
+
+.content-form label {
+	float: left;
+	text-align: right;
+	margin-right: 15px;
+	width: 100px;
+	padding-top: 5px;
+	font-size: 1.4em;
+}
 
 .styledform {
 	font-size: 1.3em;	
 	font-family:"Trebuchet MS";
 }
 .styledform label {
-	width: auto;
+	width: 10%;
 }
 .ckeditor {
 /*width:70%;margin-left:16.5em;*/	
+padding-left: 115px;
 }
+
 input, textarea {
 	padding: 9px;
 	border: solid 1px #E5E5E5;
